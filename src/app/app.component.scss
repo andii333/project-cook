@@ -1,0 +1,18 @@
+.head{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(219, 245, 235);
+    border-bottom: 2px solid rgb(180, 203, 255);;
+
+}
+.head .mat-button-toggle{
+color: rgb(26, 38, 199) ;
+background-color:  rgb(236, 246, 247);
+margin: 5px;
+border: solid 2px rgb(178, 188, 245);
+font-weight: 500 ;
+border-radius: 20px;
+}
+.mat-button-toggle{
+   border: 2px solid white; 
+}

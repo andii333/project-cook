@@ -1,0 +1,14 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-subtitle> <h3>{{dish.title}}</h3> </mat-card-subtitle>
+    </mat-card-header>
+    <img class="photo" *ngIf="!!dish.photo" src="../../../../assets/{{dish.photo}}.jpg">
+    <div class="text">
+      <ul>
+         <li *ngFor="let i of dish.ingredients">{{ i }}</li>  
+     </ul>
+        <p> {{dish.receipt}}
+        </p>
+    </div>
+</mat-card>

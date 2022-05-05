@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "andrii-cook",
+    "cook": "cook-f08ea",
+    "eat": "andrii-cook"
+  },
+  "targets": {}
+}

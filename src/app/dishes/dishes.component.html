@@ -1,0 +1,9 @@
+<div class="breakfast-container">
+    <div class="breakfest-button">
+        <button mat-stroked-button *ngFor="let dish of dishes" (click)="onDishClick(dish)">{{ dish.title }}</button>
+    </div>
+    <div class="breakfast-field">
+        <router-outlet></router-outlet>
+        <!-- <app-dish [dish]="selectedDish"></app-dish> -->
+    </div>
+</div>

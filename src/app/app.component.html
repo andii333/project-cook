@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="head">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle routerLink="main">Рецепти</mat-button-toggle>
+    <mat-button-toggle routerLink="addRecipe">Додати рецепт</mat-button-toggle>
+    <mat-button-toggle routerLink="contakt">Контакти</mat-button-toggle>
+    <mat-button-toggle (click)="addRecipes()">Завантажити рецепти</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+ <div class="tilo">
+ </div>
+ 
+ <div>
+  <router-outlet></router-outlet>
+ </div>
+</div>

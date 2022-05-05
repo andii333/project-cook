@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> ДОДАТИ РЕЦЕПТ</h2>
+<div class="cont">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <h3>Вид страви</h3>
+            <mat-radio-group [formControlName]="field.Type">
+                <mat-radio-button value="breakfasts">Сніданки</mat-radio-button>
+                <mat-radio-button value="firstDishs">Перші Страви</mat-radio-button>
+                <mat-radio-button value="appetizers">Закуски</mat-radio-button>
+                <mat-radio-button value="salads">Салати</mat-radio-button>
+                <mat-radio-button value="garnishs">Гарніри</mat-radio-button>
+                <mat-radio-button value="desserts">Десерти</mat-radio-button>
+                <mat-radio-button value="drinks">Напої</mat-radio-button>
+                <mat-radio-button value="fish">Риба</mat-radio-button>
+                <mat-radio-button value="meat">М'ясо</mat-radio-button>
+                <mat-radio-button value="grill">Гриль</mat-radio-button>
+                <mat-radio-button value="bakes">Випічка</mat-radio-button>
+                <mat-radio-button value="conservations">Консервації</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h3>Назва страви</h3>
+            <br>
+            <input class='input-name-dish matInput' placeholder="Впишіть сюди назву страви" [formControlName]="field.Title">
+
+        </div>
+        <hr>
+        <div class="ingridients">
+            <h3>Інгрідієнти</h3>
+            <div class="add-lessons-form">
+                <ng-container [formArrayName]="field.Ingredients">
+                    <ng-container *ngFor="let ingredient of getIngredients().controls; let i = index">
+                        <input (close)="addIngredient()" placeholder="Впишіть сюди тільки один інгрідієнт" required matInput [formControlName]="i"  (keydown)="onKeydownMain($event)">
+                        <button class="close-field-ingridient" [disabled]="shouldDisableDeleteButton()" (click)='closeFieldIngridient(i)'>X</button>
+                    </ng-container>
+                </ng-container>
+                <button mat-stroked-button (click)="addIngredient()" [disabled]="shouldDisableAddButton()">
+                    Добавити інгрідієнт
+                </button>
+                <!-- <button class="close-field-ingridient" [disabled]="disableButtonClose" (click)='closeFieldIngridient()'>X</button> -->
+            </div>
+        </div>
+        <hr>
+        <div class="receipt">
+            <h3>РЕЦЕПТ</h3>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label id="playceholder-textarea">Впишіть рецепт приготування сюди</mat-label>
+                <textarea matInput [formControlName]="field.Receipt" cdkTextareaAutosize cdkAutosizeMinRows="5"
+                    cdkAutosizeMaxRows="10"></textarea>
+                <mat-error *ngIf="form.get(field.Receipt)?.invalid">Обов'язкове поле</mat-error>
+            </mat-form-field>
+        </div>
+        <p id='eror' *ngIf="!form.valid">Потрібно заповнити усі поля!</p>
+        <button mat-button color="blue" (click)="submit()" [disabled]="!form.valid"> Зберегти </button>
+
+    </form>
+</div>
+</body>
+</html>
+
+

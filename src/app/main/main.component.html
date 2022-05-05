@@ -1,0 +1,19 @@
+<div class="main-container">
+    <div class="main-button">
+        <button mat-flat-button (click)="onTypeButtonClick('breakfasts')">Сніданки</button>
+        <button mat-flat-button (click)="onTypeButtonClick('firstDishs')">Перші Страви</button>
+        <button mat-flat-button (click)="onTypeButtonClick('appetizers')">Закуски</button>
+        <button mat-flat-button (click)="onTypeButtonClick('salads')">Салати </button>
+        <button mat-flat-button (click)="onTypeButtonClick('garnishs')">Гарніри</button>
+        <button mat-flat-button (click)="onTypeButtonClick('desserts')">Десерти</button>
+        <button mat-flat-button (click)="onTypeButtonClick('drinks')">Напої</button>
+        <button mat-flat-button (click)="onTypeButtonClick('fish')">Риба</button>
+        <button mat-flat-button (click)="onTypeButtonClick('meat')">М'ясо</button>
+        <button mat-flat-button (click)="onTypeButtonClick('grill')">Гриль</button>
+        <button mat-flat-button (click)="onTypeButtonClick('bakes')">Випічка</button>
+        <button mat-flat-button (click)="onTypeButtonClick('conservations')">Консервації</button>
+    </div>
+    <div class="main-field">
+        <router-outlet></router-outlet>
+    </div>
+</div>
