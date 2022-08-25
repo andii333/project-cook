@@ -11,9 +11,9 @@ import { DishesComponent } from './dishes/dishes.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { ContaktComponent } from './contakt/contakt.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getAnalytics } from "firebase/analytics";
+import { environment } from "src/environments/environment";
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,8 +22,7 @@ import { getAnalytics } from "firebase/analytics";
     DishesComponent,
     AddRecipeComponent,
     ContaktComponent,
-   
-  ],
+     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,8 +30,8 @@ import { getAnalytics } from "firebase/analytics";
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    [provideFirebaseApp(() => initializeApp({})),
-    provideFirestore(() => getFirestore())],
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

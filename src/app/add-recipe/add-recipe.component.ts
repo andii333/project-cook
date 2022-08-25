@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, MinLengthValidator, NgForm, Validators } from '@angular/forms';
 import { findIndex, last, lastValueFrom } from 'rxjs';
 import { StoreService } from '../services/store.service';
-
 enum FormField {
   Type = 'type',
   Title = 'title',
@@ -24,7 +24,8 @@ export class AddRecipeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: StoreService
+    private store: StoreService,
+    private firestore: AngularFirestore
   ) { }
 
   ngOnInit(): void {
@@ -54,7 +55,7 @@ export class AddRecipeComponent implements OnInit {
   submit() {
     const newDish = this.form.getRawValue();
     this.store.addNewDish(newDish);
-    // location.reload()
+    this.form.reset()
     alert('Рецепт успішно додано')
     this.form.setControl(FormField.Ingredients, this.fb.array([new FormControl('', Validators.required)], Validators.required));
   }
@@ -80,6 +81,7 @@ export class AddRecipeComponent implements OnInit {
   o = function fk (n:number):number {
     return (n != 1) ? n * fk(n - 1) : 1;
   }
+  
 }
 
 

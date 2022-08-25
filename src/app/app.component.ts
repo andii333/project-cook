@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { StoreService } from './services/store.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +11,10 @@ import { getAnalytics } from "firebase/analytics";
 export class AppComponent {
   title = 'cook';
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private storeService: StoreService
+    ) {
 
   }
 
@@ -18,9 +22,6 @@ export class AppComponent {
     this.router.navigate([page]);
   }
 
-  addRecipes(){
-    
-  }
 }
 
 const firebaseConfig = {
