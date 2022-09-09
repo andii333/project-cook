@@ -114,14 +114,23 @@ hr {
     width: 90vw;
   }
 
-  .mat-stroked-button {
+  .add-ingredient {
     margin-left: 3vw;
+    background-color: rgb(140, 178, 250);
+      border-radius: 5px;
+      margin-bottom: 1vw;
+      padding: 1vw;
+      font-weight: 500;
+      border: none;
   }
 
   .close-field-ingridient {
-    background-color: rgb(245, 100, 100);
-    border-radius: 50%;
+    background-color: rgba(234, 42, 42, 0.6);
+    border-radius: 5px;
     margin-bottom: 1vw;
+    padding: 1vw;
+    font-weight: 500;
+    border:none;
   }
 
 }

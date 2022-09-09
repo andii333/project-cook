@@ -40,11 +40,14 @@
             <div class="add-lessons-form">
                 <ng-container [formArrayName]="field.Ingredients">
                     <ng-container *ngFor="let ingredient of getIngredients().controls; let i = index">
-                        <input class="ingridient-input" (close)="addIngredient()" placeholder="Впишіть сюди тільки один інгрідієнт" required matInput [formControlName]="i"  (keydown)="onKeydownMain($event)">
-                        <button class="close-field-ingridient" [disabled]="shouldDisableDeleteButton()" (click)='closeFieldIngridient(i)'>X</button>
+                        <input class="ingridient-input" (close)="addIngredient()" 
+                        placeholder="Впишіть сюди тільки один інгрідієнт" required matInput [formControlName]="i"
+                          (keydown)="onKeydownMain($event)">
+                        <button class="close-field-ingridient" [disabled]="shouldDisableDeleteButton()"
+                         (click)='closeFieldIngridient(i)'>Видалити інгрідієнт</button>
                     </ng-container>
                 </ng-container>
-                <button mat-stroked-button (click)="addIngredient()" [disabled]="shouldDisableAddButton()">
+                <button class="add-ingredient" (click)="addIngredient()" [disabled]="shouldDisableAddButton()">
                     Добавити інгрідієнт
                 </button>
             </div>
