@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="main-button">
+    <div class="main-button" [ngClass]="{'active': active, 'inactive':!active}">
         <button mat-flat-button (click)="onTypeButtonClick('breakfasts')">Сніданки</button>
         <button mat-flat-button (click)="onTypeButtonClick('firstDishs')">Перші Страви</button>
         <button mat-flat-button (click)="onTypeButtonClick('appetizers')">Закуски</button>

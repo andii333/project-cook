@@ -7,7 +7,8 @@ enum FormField {
   Type = 'type',
   Title = 'title',
   Ingredients = 'ingredients',
-  Receipt = 'receipt'
+  Receipt = 'receipt',
+  Author = 'author'
 }
 
 
@@ -33,6 +34,7 @@ export class AddRecipeComponent implements OnInit {
       [FormField.Type]: ['', Validators.required],
       [FormField.Title]: ['', Validators.required],
       [FormField.Receipt]: ['', Validators.required],
+      [FormField.Author]: ['', Validators.required],
       [FormField.Ingredients]: this.fb.array([new FormControl('', Validators.required)])
     });
 
@@ -47,9 +49,7 @@ export class AddRecipeComponent implements OnInit {
   disableButtonClose: boolean = true;
   addIngredient(): void {
     (this.form.get(this.field.Ingredients) as FormArray).push(new FormControl('', Validators.required));
-    // console.log(this.form.get(this.field.Ingredients) )
     this.disableButtonClose = false;
-    // if (this.field.Ingredients[1]
   }
 
   submit() {

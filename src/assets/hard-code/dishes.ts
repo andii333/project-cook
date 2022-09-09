@@ -7,6 +7,7 @@ import { DishComponent } from "src/app/main/dish/dish.component";
     photo?: string;
     ingredients: string[];
     receipt: string;
+    author?:string;
 }
 
 export let allDishes: Dish[] = [

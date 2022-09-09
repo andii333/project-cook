@@ -1,15 +1,8 @@
 <div class="container">
   <div class="head">
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle routerLink="main">Рецепти</mat-button-toggle>
-    <mat-button-toggle routerLink="addRecipe">Додати рецепт</mat-button-toggle>
-    <mat-button-toggle routerLink="contakt">Контакти</mat-button-toggle>
-    </mat-button-toggle-group>
+    <button class="head-button" (click)="goToPage('main')">Рецепти</button>
+    <button class="head-button" (click)="goToPage('addRecipe')">Додати рецепт</button>
+    <button class="head-button" (click)="goToPage('contakt')">Контакти</button>
   </div>
- <div class="tilo">
- </div>
- 
- <div>
   <router-outlet></router-outlet>
  </div>
-</div>

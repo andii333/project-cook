@@ -1,22 +1,39 @@
 .main-container {
     display: flex;
-   background-color: rgb(219, 245, 235);
+    background-color: rgb(219, 245, 235);
+
 }
+
 .main-button {
-    padding: 15px;
+    padding: 1vw;
     width: max-content;
     border-right: 2px solid rgb(183, 193, 255);
-   
-   
 }
-.mat-flat-button{
-    color: rgb(101, 115, 240) ;
+
+.mat-flat-button {
+    color: rgb(101, 115, 240);
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(183, 193, 255);
     text-align: left;
-    font-size: 20px;
-    margin: 5px;   
-    display: block; 
-    width: 160px;
+    font-size: 1rem;
+    margin: 0.3rem;
+    display: block;
+    width: 9rem;
     border-radius: 15px;
+}
+
+@media screen and (max-width:800px) {
+    .main-container {
+        width: 100vw;
+.active{
+    display: block;
+}
+.inactive{
+    display: none;
+}
+    }
+
+    .mat-flat-button {
+        border-radius: 15px;
+    }
 }

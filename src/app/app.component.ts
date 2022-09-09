@@ -10,18 +10,15 @@ import { StoreService } from './services/store.service';
 })
 export class AppComponent {
   title = 'cook';
-
+  
   constructor(
     private router: Router,
     private storeService: StoreService
-    ) {
-
-  }
+    ) {}
 
   goToPage(page: string): void {
-    this.router.navigate([page]);
+ this.router.navigate([page]);
   }
-
 }
 
 const firebaseConfig = {

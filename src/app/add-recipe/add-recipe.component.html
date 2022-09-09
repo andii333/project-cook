@@ -40,19 +40,18 @@
             <div class="add-lessons-form">
                 <ng-container [formArrayName]="field.Ingredients">
                     <ng-container *ngFor="let ingredient of getIngredients().controls; let i = index">
-                        <input (close)="addIngredient()" placeholder="Впишіть сюди тільки один інгрідієнт" required matInput [formControlName]="i"  (keydown)="onKeydownMain($event)">
+                        <input class="ingridient-input" (close)="addIngredient()" placeholder="Впишіть сюди тільки один інгрідієнт" required matInput [formControlName]="i"  (keydown)="onKeydownMain($event)">
                         <button class="close-field-ingridient" [disabled]="shouldDisableDeleteButton()" (click)='closeFieldIngridient(i)'>X</button>
                     </ng-container>
                 </ng-container>
                 <button mat-stroked-button (click)="addIngredient()" [disabled]="shouldDisableAddButton()">
                     Добавити інгрідієнт
                 </button>
-                <!-- <button class="close-field-ingridient" [disabled]="disableButtonClose" (click)='closeFieldIngridient()'>X</button> -->
             </div>
         </div>
         <hr>
         <div class="receipt">
-            <h3>РЕЦЕПТ</h3>
+            <h3>Рецепт</h3>
             <br>
             <mat-form-field appearance="outline">
                 <mat-label id="playceholder-textarea">Впишіть рецепт приготування сюди</mat-label>
@@ -61,6 +60,7 @@
                 <mat-error *ngIf="form.get(field.Receipt)?.invalid">Обов'язкове поле</mat-error>
             </mat-form-field>
         </div>
+            <input class="author-name" [formControlName]="field.Author" placeholder="Впишіть сюди своє ім'я">
         <p id='eror' *ngIf="!form.valid">Потрібно заповнити усі поля!</p>
         <button mat-button color="blue" (click)="submit()" [disabled]="!form.valid"> Зберегти </button>
 

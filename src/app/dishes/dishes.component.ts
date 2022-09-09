@@ -13,6 +13,7 @@ export class DishesComponent implements OnInit {
   dishes: Dish[];
   selectedDish: Dish;
   type: string;
+  
 
   constructor(
     private router: Router,
@@ -21,15 +22,13 @@ export class DishesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+      this.route.params.subscribe(params => {
       this.type = params['type'];
       this.dishes = this.store.dishes.filter(dish => dish.type === params['type']);
     });
-
   }
 
   onDishClick(dish: Dish): void {
-    // this.selectedDish = dish;
     this.router.navigate([`main/${this.type}/${dish.title}`]);
   }
 }

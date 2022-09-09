@@ -1,6 +1,13 @@
 .photo{
-    width: 500px;
-    height: 400px;
+    width: 30vw;
+    height: auto;
     display: flex;
     margin: auto;
+}
+
+@media screen and (max-width:800px) {
+
+.photo {
+    width: 50vw;
+}
 }

@@ -1,13 +1,15 @@
-.breakfest-button{
-border-right: 2px solid rgb(180, 203, 255);
-width: 170px;
+.breakfest-button {
+    border-right: 2px solid rgb(180, 203, 255);
+    width: 170px;
 
 }
-.breakfast-container{
+
+.breakfast-container {
     display: flex;
     width: 100%;
 }
-button{
+
+button {
     text-align: left;
     height: fit-content;
     display: block;
@@ -16,10 +18,26 @@ button{
     font-size: medium;
     margin: 10px;
     width: 150px;
-    background-color: rgb(203, 215, 248) ;
+    background-color: rgb(203, 215, 248);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.breakfast-field{
-  word-wrap: break-word;
-  padding: 15px;
- }
+
+.breakfast-field {
+    word-wrap: break-word;
+    padding: 15px;
+}
+
+@media screen and (max-width:800px) {
+    .breakfast-container {
+        flex-direction: column;
+
+        .breakfest-button {
+            border-right: none;
+        }
+    }
+
+    .breakfast-field {
+        width: 100vw;
+        padding: 2px;
+    }
+}
