@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class StoreService {
 
   dishes: Dish[];
+
   constructor(private firestore: AngularFirestore) {
     this.firestore.collection('dishes').snapshotChanges().subscribe(collection => {
       const dishesList = collection.map(col => col.payload.doc.data());

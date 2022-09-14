@@ -9,7 +9,6 @@ import { Dish } from 'src/assets/hard-code/dishes';
   styleUrls: ['./dish.component.scss']
 })
 export class DishComponent implements OnInit {
-
   dish: Dish;
   
   constructor(

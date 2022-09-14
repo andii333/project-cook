@@ -1,14 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, MinLengthValidator, NgForm, Validators } from '@angular/forms';
-import { findIndex, last, lastValueFrom } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, MinLengthValidator, NgForm, Validators } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 import { StoreService } from '../services/store.service';
+
 enum FormField {
   Type = 'type',
   Title = 'title',
+  Photo = 'photo',
   Ingredients = 'ingredients',
   Receipt = 'receipt',
-  Author = 'author'
+  Author = 'author',
 }
 
 
@@ -20,19 +21,18 @@ enum FormField {
 export class AddRecipeComponent implements OnInit {
 
   form: FormGroup;
-
   field = FormField;
 
   constructor(
     private fb: FormBuilder,
     private store: StoreService,
-    private firestore: AngularFirestore
-  ) { }
+    ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       [FormField.Type]: ['', Validators.required],
       [FormField.Title]: ['', Validators.required],
+      [FormField.Photo]: [''],
       [FormField.Receipt]: ['', Validators.required],
       [FormField.Author]: ['', Validators.required],
       [FormField.Ingredients]: this.fb.array([new FormControl('', Validators.required)])
@@ -50,6 +50,14 @@ export class AddRecipeComponent implements OnInit {
   addIngredient(): void {
     (this.form.get(this.field.Ingredients) as FormArray).push(new FormControl('', Validators.required));
     this.disableButtonClose = false;
+  }
+
+  onFileSelected(event:any){
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event:any) =>{
+  this.form.patchValue({ photo: event.target.result })
+}
   }
 
   submit() {
@@ -78,9 +86,9 @@ export class AddRecipeComponent implements OnInit {
       event.preventDefault();
     }
   }
-  o = function fk (n:number):number {
-    return (n != 1) ? n * fk(n - 1) : 1;
-  }
+  // o = function fk (n:number):number {
+  //   return (n != 1) ? n * fk(n - 1) : 1;
+  // }
   
 }
 
