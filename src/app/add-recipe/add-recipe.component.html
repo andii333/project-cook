@@ -54,7 +54,17 @@
         </div>
         <hr>
         <div class="add-foto">
-            <input type="file" (change)="onFileSelected($event)" accept="image/*" >
+            <h3>Добавити фото</h3>
+            <p> Якщо бажаєте, ви можете прикріпити фотографію</p>
+            <input type="file" class="input-photo" #inputPhoto (change)="onFileSelected($event)" accept="image/*" >
+            <button class="input-photo-btn" (click)="inputPhoto.click()">Завантажити фотографію</button>
+            <span *ngIf="addPhotoBoolean; then thenBlock else elseBlock"></span>
+           <ng-template  #thenBlock><span class="photo-message-yes">Фото додане!</span></ng-template>
+            <ng-template  #elseBlock><span class="photo-message-no">Фото не прикріплене</span></ng-template>
+            <p *ngIf="addPhotoInvalid" class='error'>Вибраний формат фотографії не можливо завантажити, оберіть іншу фотографію</p>
+        <div>
+           <img class="img-photo" *ngIf="url" [src]="url" alt="photo"> 
+        </div>
         </div>
         <hr>
         <div class="receipt">
@@ -64,11 +74,10 @@
                 <mat-label id="playceholder-textarea">Впишіть рецепт приготування сюди</mat-label>
                 <textarea matInput [formControlName]="field.Receipt" cdkTextareaAutosize cdkAutosizeMinRows="5"
                     cdkAutosizeMaxRows="10"></textarea>
-                <mat-error *ngIf="form.get(field.Receipt)?.invalid">Обов'язкове поле</mat-error>
             </mat-form-field>
         </div>
             <input class="author-name" [formControlName]="field.Author" placeholder="Впишіть сюди своє ім'я">
-        <p id='eror' *ngIf="!form.valid">Потрібно заповнити усі поля!</p>
+        <p class='error' *ngIf="!form.valid">Потрібно заповнити усі поля! Або видалити порожнє поле інгрідієнту.</p>
         <button mat-button color="blue" (click)="submit()" [disabled]="!form.valid"> Зберегти </button>
 
     </form>

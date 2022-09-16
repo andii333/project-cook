@@ -62,7 +62,7 @@ hr {
   background-color: rgb(140, 178, 250);
 }
 
-#eror {
+.error{
   color: red;
   text-align: center;
   font-size: 1rem;
@@ -100,8 +100,30 @@ hr {
     padding-bottom: 5px;
   }
 
+  .input-photo{
+    display: none;
+  }
+  .input-photo-btn{
+    border:none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-right: 1vw;
+  }
+
+  .photo-message-yes{
+    color:blue
+  }
+  .photo-message-no{
+    color:rgb(255, 0, 60)
+  }
+
   button {
     background-color: rgb(152, 191, 250);
+  }
+
+  .img-photo{
+    width: 20vw;
+    margin: 1vw;
   }
 
   textarea {

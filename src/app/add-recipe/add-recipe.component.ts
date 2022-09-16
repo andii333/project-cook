@@ -20,13 +20,16 @@ enum FormField {
 })
 export class AddRecipeComponent implements OnInit {
 
+  addPhotoBoolean: boolean;
+  addPhotoInvalid: boolean;
   form: FormGroup;
   field = FormField;
+  url:File;
 
   constructor(
     private fb: FormBuilder,
     private store: StoreService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -38,9 +41,9 @@ export class AddRecipeComponent implements OnInit {
       [FormField.Ingredients]: this.fb.array([new FormControl('', Validators.required)])
     });
 
-    this.form.valueChanges.subscribe(changes => {
-      console.log(this.form)
-    })
+    // this.form.valueChanges.subscribe(changes => {
+    //   console.log(this.form)
+    // })
   }
 
   getIngredients(): FormArray {
@@ -52,12 +55,22 @@ export class AddRecipeComponent implements OnInit {
     this.disableButtonClose = false;
   }
 
-  onFileSelected(event:any){
-    let reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (event:any) =>{
-  this.form.patchValue({ photo: event.target.result })
-}
+  onFileSelected(event: any) {
+    if (event.target.files[0]) {
+      if (event.target.files[0].type.match(/image\/*/) == null) {
+        this.addPhotoInvalid = true;
+        this.addPhotoBoolean = false;
+      } else {
+        let reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = (event: any) => {
+          this.form.patchValue({ photo: event.target.result })
+          this.url = event.target.result;
+        }
+        this.addPhotoBoolean = true;
+        this.addPhotoInvalid = false;
+      }
+    }
   }
 
   submit() {
@@ -81,7 +94,7 @@ export class AddRecipeComponent implements OnInit {
     return (this.form.get(this.field.Ingredients) as FormArray)?.length < 2;
   }
 
-  public onKeydownMain (event: { key: string; preventDefault: () => void; }): void {
+  public onKeydownMain(event: { key: string; preventDefault: () => void; }): void {
     if (event.key === "Enter" || event.key === "Tab") {
       event.preventDefault();
     }
@@ -89,7 +102,7 @@ export class AddRecipeComponent implements OnInit {
   // o = function fk (n:number):number {
   //   return (n != 1) ? n * fk(n - 1) : 1;
   // }
-  
+
 }
 
 
