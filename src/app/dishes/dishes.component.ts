@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dish } from 'src/assets/hard-code/dishes';
 import { StoreService } from '../services/store.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dishes',
@@ -13,7 +14,7 @@ export class DishesComponent implements OnInit {
   dishes: Dish[];
   selectedDish: Dish;
   type: string;
-  
+  subscription!: Subscription;
 
   constructor(
     private router: Router,
@@ -22,10 +23,14 @@ export class DishesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.route.params.subscribe(params => {
+    this.subscription = this.route.params.subscribe(params => {
       this.type = params['type'];
       this.dishes = this.store.dishes.filter(dish => dish.type === params['type']);
     });
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+
   }
 
   onDishClick(dish: Dish): void {
